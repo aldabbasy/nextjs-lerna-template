@@ -1,0 +1,8 @@
+{
+  "HomePage": {
+    "ToggleThemeLabel": "Toggle Theme",
+    "ToggleLanguageLabel": "Toggle Language",
+    "WelcomeLabel": "Welcome to Next.Js",
+    "CurrentModeLabel": "Current Mode: {mode}"
+  }
+}

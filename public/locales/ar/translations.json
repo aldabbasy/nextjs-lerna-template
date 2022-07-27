@@ -1,0 +1,8 @@
+{
+  "HomePage": {
+    "ToggleThemeLabel": "تبديل الوضع",
+    "ToggleLanguageLabel": "تبديل اللغة",
+    "WelcomeLabel": "مرحبا بك في Next.Js",
+    "CurrentModeLabel": "الوضع الحالي: {mode}"
+  }
+}

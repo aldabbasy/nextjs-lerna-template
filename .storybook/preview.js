@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
     background: ${({ theme }) => theme.colors.surfaceBase};
     text-align: ${({ theme }) => theme.leading};
-    font-family: ${({ theme }) => theme.fontFamily} !important;
+    font-family: ${({ theme }) => theme.fontFamily || '"Poppins", sans-serif'} !important;
     direction: ${({ theme }) => theme.direction};
   }
   * {
@@ -59,7 +59,7 @@ const withAppProviders = (Story, context) => {
   return (
     <div style={{ height: '100%' }}>
       <LocalizationProvider defaultLocale={locale}>
-        <ThemeProvider defaultThemeMode={theme}>
+        <ThemeProvider storyBookTheme={theme}>
           <GlobalStyle />
           <Wrapper>
             <Story {...context}/>

@@ -11,7 +11,7 @@ const Home: NextPage = () => {
   const {
     homePage: { toggleLanguageLabel, toggleThemeLabel, currentModeLabel }
   } = useTranslations();
-  const { toggleTheme, themeMode } = useContext(ThemeContext);
+  const { toggleTheme, theme } = useContext(ThemeContext);
   const { changeLanguage, locale } = useContext(LocalizationContext);
 
   const router = useRouter();
@@ -35,7 +35,7 @@ const Home: NextPage = () => {
         {toggleLanguageLabel}
       </button>
       <Typography variant={'display'} color={'secondary'}>
-        {currentModeLabel(themeMode)}
+        {currentModeLabel(theme?.themeMode)}
       </Typography>
     </div>
   );

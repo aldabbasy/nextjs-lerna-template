@@ -1,7 +1,13 @@
-import colors from '@/constants/colors';
-import { LANGUAGES, STORAGE_KEYS } from '@/constants/common';
-import { Language, Theme } from '@/constants/types';
+import { ColorMode, ThemeMode } from '@/constants/colors';
+import { STORAGE_KEYS } from '@/constants/common';
+import { Theme } from '@/constants/types';
 import { LocalizationContext } from '@/contexts/localizationContext';
+import { isSSR } from '@/utils/common.utils';
+import {
+  getColorMode,
+  getSystemTheme,
+  getThemeValues
+} from '@/utils/theme.utils';
 import {
   createContext,
   ReactNode,
@@ -12,26 +18,11 @@ import {
 } from 'react';
 import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
-export enum ColorMode {
-  dark = 'dark',
-  light = 'light'
-}
-
 type ThemeContextProps = {
-  themeMode: ColorMode;
   toggleTheme: () => void;
+  handleSetThemeMode: (themeMode: ThemeMode) => void;
   theme: Theme;
 };
-
-const getThemeValues = (colorMode: ColorMode, locale: Language): Theme => ({
-  mode: colorMode,
-  colors: colors?.[colorMode],
-  isRtl: locale === LANGUAGES.ARABIC,
-  direction: locale === LANGUAGES.ENGLISH ? 'ltr' : 'rtl',
-  leading: locale === LANGUAGES.ENGLISH ? 'left' : 'right',
-  trailing: locale === LANGUAGES.ENGLISH ? 'right' : 'left',
-  fontFamily: '"Poppins", sans-serif' // add arabic font
-});
 
 export const ThemeContext = createContext<ThemeContextProps>(
   undefined as ThemeContextProps
@@ -39,48 +30,64 @@ export const ThemeContext = createContext<ThemeContextProps>(
 
 export const ThemeProvider = ({
   children,
-  defaultThemeMode
+  storyBookTheme
 }: {
   children: ReactNode;
-  defaultThemeMode?: ColorMode;
+  storyBookTheme?: ThemeMode;
 }) => {
   const { locale } = useContext(LocalizationContext);
-  const [themeMode, setThemeMode] = useState(
-    defaultThemeMode || ColorMode.light
+  const [isMounted, setIsMounted] = useState(false);
+  const [themeMode, setThemeMode] = useState<ThemeMode>(
+    storyBookTheme || ThemeMode.system
   );
 
-  const theme = getThemeValues(themeMode, locale);
+  const systemTheme = useMemo(getSystemTheme, [isMounted]);
 
-  const handleSetThemeMode = (colorMode: ColorMode) => {
-    setThemeMode(colorMode);
-    localStorage.setItem(STORAGE_KEYS.THEME_MODE, colorMode);
-    document.body.classList.remove(ColorMode.light, ColorMode.dark);
-    document.body.classList.add(colorMode);
-  };
-
-  const toggleTheme = () => {
-    const themeValue =
-      themeMode === ColorMode?.light ? ColorMode?.dark : ColorMode?.light;
-
-    handleSetThemeMode(themeValue);
-  };
-
-  const providerValue = useMemo(
-    () => ({ themeMode, toggleTheme, theme }),
-    [themeMode, toggleTheme]
+  const colorMode = useMemo(
+    () => getColorMode(themeMode),
+    [themeMode, systemTheme]
   );
 
   useEffect(() => {
-    const systemTheme = matchMedia('(prefers-color-scheme: dark)').matches
-      ? ColorMode.dark
-      : ColorMode.light;
+    document.body.classList.remove(ColorMode.light, ColorMode.dark);
+    document.body.classList.add(colorMode);
+  }, [colorMode]);
 
-    const localValue = localStorage.getItem(
-      STORAGE_KEYS.THEME_MODE
-    ) as ColorMode;
-    const themeValue = defaultThemeMode || localValue || systemTheme;
+  const handleSetThemeMode = (themeMode: ThemeMode) => {
+    setThemeMode(themeMode);
+    localStorage.setItem(STORAGE_KEYS.THEME_MODE, themeMode);
+  };
+  const toggleTheme = () => {
+    const themeValue =
+      colorMode === ColorMode?.light ? ThemeMode?.dark : ThemeMode?.light;
+
     handleSetThemeMode(themeValue);
-  }, [defaultThemeMode]);
+  };
+  useEffect(() => {
+    if (storyBookTheme) {
+      handleSetThemeMode(storyBookTheme);
+    }
+  }, [storyBookTheme]);
+
+  useEffect(() => {
+    if (storyBookTheme || isSSR()) return;
+    setIsMounted(true);
+
+    const storedTheme = localStorage.getItem(STORAGE_KEYS.THEME_MODE);
+    handleSetThemeMode((storedTheme as ThemeMode) || ThemeMode.system);
+  }, []);
+
+  const theme = useMemo(
+    () => getThemeValues({ themeMode, locale }),
+    [themeMode, locale]
+  );
+
+  const providerValue = useMemo(
+    () => ({ toggleTheme, handleSetThemeMode, theme }),
+    [themeMode, toggleTheme]
+  );
+
+  if (!isMounted && !storyBookTheme) return null;
 
   return (
     <ThemeContext.Provider value={providerValue}>

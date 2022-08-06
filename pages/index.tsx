@@ -1,3 +1,4 @@
+import { ThemeMode } from '@/constants/colors';
 import { LANGUAGES } from '@/constants/common';
 import { LocalizationContext } from '@/contexts/localizationContext';
 import { ThemeContext } from '@/contexts/themeContext';
@@ -11,13 +12,21 @@ const Home: NextPage = () => {
   const {
     homePage: { toggleLanguageLabel, toggleThemeLabel, welcomeLabel }
   } = useTranslations();
-  const { toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme, handleSetThemeMode } = useContext(ThemeContext);
   const { changeLanguage, locale } = useContext(LocalizationContext);
 
   return (
     <div>
       <button type={'button'} onClick={toggleTheme}>
         {toggleThemeLabel}
+      </button>
+      <button
+        type={'button'}
+        onClick={() => {
+          handleSetThemeMode(ThemeMode.system);
+        }}
+      >
+        system theme
       </button>
       <button
         type={'button'}

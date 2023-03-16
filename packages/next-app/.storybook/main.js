@@ -16,10 +16,10 @@ module.exports = {
     builder: '@storybook/builder-webpack5',
   },
   webpackFinal: async (config, { configType }) => {
-    config.resolve.modules = [path.resolve(__dirname, '..'), 'node_modules'];
+    config.resolve.modules = [path.resolve(__dirname, '../../../'), 'node_modules'];
     config.resolve.alias = {
       ...config.resolve.alias,
-      'core-js': path.resolve(__dirname, '../node_modules/core-js'),
+      'core-js': path.resolve(__dirname, '../../../node_modules/core-js'),
       '@': path.resolve(__dirname, '..'),
     };
     return config;

@@ -1,6 +1,5 @@
 {
-  "name": "next-app",
-  "version": "0.1.0",
+  "name": "root",
   "private": true,
   "engines": {
     "node": ">=14.0.0",
@@ -8,70 +7,33 @@
     "npm": "please-use-yarn"
   },
   "scripts": {
-    "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
+    "dev:next": "lerna run dev --scope next-app",
+    "build:next": "lerna run build --scope next-app",
+    "start:next": "lerna run start --scope next-app",
+    "lint:next": "lerna run lint --scope next-app",
     "prepare": "husky install",
-    "storybook": "start-storybook -p 9001 -c .storybook",
-    "build-storybook": "build-storybook",
-    "generate:component": "npx generate-react-cli component",
-    "generate:container": "npx generate-react-cli component --type=container",
-    "generate:screen": "npx generate-react-cli component --type=screen",
-    "generate:ui": "npx generate-react-cli component --type=ui",
-    "generate:hook": "npx generate-react-cli component --type=hook"
+    "storybook": "lerna run storybook --scope next-app",
+    "build:storybook": "lerna run build-storybook --scope next-app",
+    "generate:component": "lerna run generate:component --scope next-app",
+    "generate:container": "lerna run generate:container --scope next-app",
+    "generate:screen": "lerna run generate:screen --scope next-app",
+    "generate:ui": "lerna run generate:ui --scope next-app",
+    "generate:hook": "lerna run generate:hook --scope next-app"
   },
-  "dependencies": {
-    "@types/node": "^18.0.6",
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.5.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "i18next": "^21.8.13",
-    "lodash": "^4.17.21",
-    "next": "12.2.0",
-    "prettier": "github:prettier/prettier",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "react-i18next": "^11.18.0",
-    "rtl-css-js": "^1.15.0",
-    "styled-components": "^5.3.5",
-    "typescript-eslint": "0.0.1-alpha.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.18.6",
-    "@commitlint/cli": "^17.0.3",
-    "@commitlint/config-conventional": "^17.0.3",
-    "@storybook/addon-a11y": "^6.5.9",
-    "@storybook/addon-actions": "^6.5.9",
-    "@storybook/addon-essentials": "^6.5.9",
-    "@storybook/addon-interactions": "^6.5.9",
-    "@storybook/addon-links": "^6.5.9",
-    "@storybook/builder-webpack5": "^6.5.9",
-    "@storybook/manager-webpack5": "^6.5.9",
-    "@storybook/react": "^6.5.9",
-    "@storybook/testing-library": "^0.0.13",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "18.0.5",
     "@typescript-eslint/eslint-plugin": "^5.30.3",
     "@typescript-eslint/parser": "^5.30.3",
-    "babel-loader": "^8.2.5",
-    "cross-env": "^7.0.3",
     "eslint": "^8.18.0",
     "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-next": "12.2.0",
+    "eslint-config-next": "^13.2.3",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.6.0",
     "eslint-plugin-react": "^7.30.1",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-storybook": "^0.6.1",
-    "husky": "^8.0.1",
-    "storybook-react-i18next": "^1.1.2",
-    "typescript": "4.7.4",
-    "util": "^0.12.4"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
-  },
-  "resolutions": {
-    "webpack": "^5"
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }

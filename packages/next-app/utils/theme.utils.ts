@@ -1,7 +1,17 @@
 import colors, { ColorMode, ThemeMode } from '@/constants/colors';
 import { LANGUAGES } from '@/constants/common';
 import { Language, Theme } from '@/constants/types';
+import { Poppins, Tajawal } from 'next/font/google';
 import { isSSR } from './common.utils';
+
+const poppins = Poppins({
+  weight: ['300', '400', '500'],
+  subsets: ['latin']
+});
+const tajawal = Tajawal({
+  weight: ['300', '400', '500'],
+  subsets: ['arabic']
+});
 
 /**
  * getThemeValues - get theme values
@@ -23,7 +33,10 @@ export const getThemeValues = ({
   direction: locale === LANGUAGES.ENGLISH ? 'ltr' : 'rtl',
   leading: locale === LANGUAGES.ENGLISH ? 'left' : 'right',
   trailing: locale === LANGUAGES.ENGLISH ? 'right' : 'left',
-  fontFamily: '"Poppins", sans-serif' // add arabic font
+  fontFamily:
+    locale === LANGUAGES.ENGLISH
+      ? `${poppins.style.fontFamily}, sans-serif`
+      : `${tajawal.style.fontFamily}, sans-serif`
 });
 
 /**
@@ -31,7 +44,7 @@ export const getThemeValues = ({
  * @returns {ColorMode} - color mode
  */
 export const getSystemTheme = () => {
-  if (isSSR()) return;
+  if (isSSR()) return ColorMode.light;
   return matchMedia('(prefers-color-scheme: dark)').matches
     ? ColorMode.dark
     : ColorMode.light;
@@ -43,7 +56,7 @@ export const getSystemTheme = () => {
  * @returns {ColorMode} - color mode
  */
 export const getColorMode = (themeMode: ThemeMode): ColorMode => {
-  if (isSSR()) return;
+  if (isSSR()) return ColorMode.light;
   if (themeMode === ThemeMode.system) return getSystemTheme();
   return ColorMode?.[themeMode];
 };

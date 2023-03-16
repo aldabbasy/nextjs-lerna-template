@@ -58,5 +58,5 @@ export interface Theme {
   direction: 'ltr' | 'rtl';
   leading: 'left' | 'right';
   trailing: 'left' | 'right';
-  fontFamily?: '"Poppins", sans-serif' | '"Dubai"'; // add arabic font
+  fontFamily?: `${string}, sans-serif`;
 }

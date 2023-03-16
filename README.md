@@ -23,9 +23,10 @@ Before you can use this template project, you must have the following software i
 
 To install this template project, follow these steps:
 
-1. Clone this repository: `git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME.git`
-2. Navigate to the cloned repository: `cd YOUR_REPOSITORY_NAME`
+1. Clone this repository: `git clone https://github.com/aldabbasy/next-template-v2.git`
+2. Navigate to the cloned repository: `cd next-template-v2`
 3. Install dependencies: `yarn`
+4. Install Lerna globally `yarn add global lerna`
 
 ### Usage
 

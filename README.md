@@ -1,4 +1,4 @@
-# 🔥 Lerna/Next.js 13 Template 
+# 🔥 Lerna / Next.js 13 Template 
 
 This project is a starter template for a Lerna/Next.js 13 application that includes the following features:
 
@@ -53,12 +53,12 @@ Lerna is a tool for managing JavaScript projects with multiple packages. It opti
 
 Most important features of Lerna:
 
-- Parallel execution: Lerna can run scripts and commands across multiple packages in parallel, which can save time and speed up the development process.
-- Caching: Lerna caches dependencies and avoids re-installing them every time a command is run, which can save time and disk space.
-- Package versioning: Lerna manages the versioning of packages in the repository, making it easy to track changes and dependencies between packages.
-- Independent versioning: Lerna supports independent versioning of packages, allowing packages to have their own version numbers and release cycles.
-- Simplified development: Lerna simplifies the development process in a monorepo by providing a single command-line interface for managing and developing packages in the repository.
-- Code sharing: Lerna makes it easy to share code between packages in the repository, reducing duplication and improving code maintainability.
+- **Parallel execution**: Lerna can run scripts and commands across multiple packages in parallel, which can save time and speed up the development process.
+- **Caching**: Lerna caches dependencies and avoids re-installing them every time a command is run, which can save time and disk space.
+- **Package versioning**: Lerna manages the versioning of packages in the repository, making it easy to track changes and dependencies between packages.
+- **Independent versioning**: Lerna supports independent versioning of packages, allowing packages to have their own version numbers and release cycles.
+- **Simplified development**: Lerna simplifies the development process in a monorepo by providing a single command-line interface for managing and developing packages in the repository.
+- **Code sharing**: Lerna makes it easy to share code between packages in the repository, reducing duplication and improving code maintainability.
 
 ## License
 

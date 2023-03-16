@@ -1,37 +1,69 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔥 Lerna/Next.js 13 Template 
+
+This project is a starter template for a Lerna/Next.js 13 application that includes the following features:
+
+- Next.js 13 with Server-side Rendering (SSR) support
+- Styled Components for styling
+- Localisation (i18n) using `react-i18next`
+- Husky and Commitlint for code linting and formatting
+- Storybook for UI component testing and development
+- Typescript for type checking
+- Theme Switcher that supports light, dark, and system themes
 
 ## Getting Started
 
-First, install the dependencies:
-```bash
-yarn install
+### Prerequisites
+
+Before you can use this template project, you must have the following software installed:
+
+- Node.js (v14 or later)
+- Yarn
+
+### Installing
+
+To install this template project, follow these steps:
+
+1. Clone this repository: `git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPOSITORY_NAME.git`
+2. Navigate to the cloned repository: `cd YOUR_REPOSITORY_NAME`
+3. Install dependencies: `yarn`
+
+### Usage
+
+To start the development server, run:
 ```
-
-First, run the development server:
-
-```bash
-yarn dev
+    yarn dev:next
 ```
+This will start a development server at `http://localhost:3000`.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+To start Storybook, run:
+```
+    yarn storybook
+```
+This will start a Storybook server at `http://localhost:9001`.
+To build the application, run:
+```
+    yarn build:next
+```
+This will create a production build in the `build` directory.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Why Lerna?
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Lerna is a tool for managing JavaScript projects with multiple packages. It optimizes the workflow around managing multi-package repositories with git and npm. With Lerna, you can manage your project's dependencies across multiple packages more efficiently.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Most important features of Lerna:
 
-## Learn More
+- Parallel execution: Lerna can run scripts and commands across multiple packages in parallel, which can save time and speed up the development process.
+- Caching: Lerna caches dependencies and avoids re-installing them every time a command is run, which can save time and disk space.
+- Package versioning: Lerna manages the versioning of packages in the repository, making it easy to track changes and dependencies between packages.
+- Independent versioning: Lerna supports independent versioning of packages, allowing packages to have their own version numbers and release cycles.
+- Simplified development: Lerna simplifies the development process in a monorepo by providing a single command-line interface for managing and developing packages in the repository.
+- Code sharing: Lerna makes it easy to share code between packages in the repository, reducing duplication and improving code maintainability.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License - see the `LICENSE` file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Keywords
 
-## Deploy on Vercel
+Lerna, Next.js, Styled Components, i18n, Husky, Commitlint, Storybook, Typescript, Dark Mode, Light Mode, System Theme, Monorepo, Multi-package repository, Front-end development, Web development, JavaScript
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

@@ -28,7 +28,10 @@ To install this template project, follow these steps:
 3. Install dependencies: `yarn`
 4. Install Lerna globally `yarn global add lerna`
 
-or you can use the `use this template` function of Github to quickly clone and create a repo using this template
+or you can use the `use this template` function of Github to quickly clone and create a repo using this template:
+<img width="354" alt="Screenshot 2023-03-17 at 12 02 40 am" src="https://user-images.githubusercontent.com/45473839/225778512-3ceedbd8-52d2-4e8b-aa93-e1ce65252591.png">
+
+
 
 ### Usage
 

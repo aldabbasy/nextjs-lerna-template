@@ -72,3 +72,7 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 Lerna, Next.js, Styled Components, i18n, Husky, Commitlint, Storybook, Typescript, Dark Mode, Light Mode, System Theme, Monorepo, Multi-package repository, Front-end development, Web development, JavaScript
 
+
+## Author: Allaith Aldababseh
+
+[Linkedin](<https://www.linkedin.com/in/dabbas97/>)

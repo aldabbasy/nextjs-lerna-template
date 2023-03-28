@@ -75,4 +75,4 @@ Lerna, Next.js, Styled Components, i18n, Husky, Commitlint, Storybook, Typescrip
 
 ## Author: Allaith Aldababseh
 
-[Linkedin](<https://www.linkedin.com/in/dabbas97/>)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/dabbas97) 

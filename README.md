@@ -70,7 +70,7 @@ This project is licensed under the MIT License - see the `LICENSE` file for deta
 
 ## Keywords
 
-Lerna, Next.js, Styled Components, i18n, Husky, Commitlint, Storybook, Typescript, Dark Mode, Light Mode, System Theme, Monorepo, Multi-package repository, Front-end development, Web development, JavaScript
+Lerna, Next.js, Styled Components, i18n, Husky, Commitlint, Storybook, Typescript, Dark Mode, Light Mode, System Theme, Monorepo, Multi-package repository, Front-end development, Web development, JavaScript, Lerna Monorepo, Next.js Lerna Monorepo, Lerna Template, Next.js 13, Micro frontends, module federation
 
 
 ## Author: Allaith Aldababseh
